@@ -1,0 +1,1 @@
+export const ApiUrl = "https://exchangeratesapi.io";
