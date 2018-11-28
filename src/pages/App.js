@@ -61,7 +61,7 @@ class App extends Component {
     const {currList, selectedValue} = this.state
     if(typeof selectedValue.id !== 'undefined'){
       console.log(_.findIndex(currList,{id: selectedValue.id}))
-      if(_.findIndex(currList,{id: selectedValue.id}) !== '-1'){
+      if(_.findIndex(currList,{id: selectedValue.id}) !== -1){
         this.setState({
           warningText: 'Cannot add duplicate currency !'
         })
