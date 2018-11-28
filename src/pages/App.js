@@ -59,7 +59,7 @@ class App extends Component {
   //add new list item
   handleAddItemChange = () => {
     const {currList, selectedValue} = this.state
-    if(typeof selectedValue.id !== 'undefined'){
+    if(typeof selectedValue.id != 'undefined'){
       console.log(_.findIndex(currList,{id: selectedValue.id}))
       if(_.findIndex(currList,{id: selectedValue.id}) !== -1){
         this.setState({
@@ -80,9 +80,16 @@ class App extends Component {
 
   //set USD value
   handleChangeUSD = (e) => {
-    this.setState({
-      dollarValue: e.floatValue
-    })
+    if(typeof e.floatValue !== 'undefined'){
+      this.setState({
+        dollarValue: e.floatValue
+      })
+    }else {
+      this.setState({
+        dollarValue: 0
+      })
+    }
+   
   }
 
   //delete list
