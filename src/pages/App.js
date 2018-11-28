@@ -38,6 +38,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    //get newest currency
     let that = this
     requestAPI.get('/api/latest')
     .then(function(response){
@@ -48,17 +49,14 @@ class App extends Component {
     })
   }
 
-  countCurr = (curr) => {
-    let dollar = ''
-    return dollar
-  }
-
-  selectAddItem = (e) => {
+  //handle Select Item
+  handleSelectAddItem = (e) => {
     this.setState({
       selectedValue: e.value
     })
   }
 
+  //add new list item
   handleAddItemChange = () => {
     const {currList, selectedValue} = this.state
     if(typeof selectedValue.id !== 'undefined'){
@@ -80,12 +78,14 @@ class App extends Component {
     }
   }
 
+  //set USD value
   handleChangeUSD = (e) => {
     this.setState({
       dollarValue: e.floatValue
     })
   }
 
+  //delete list
   handleDeleteItem = (curr) => {
     const {currList} = this.state
 
@@ -93,6 +93,7 @@ class App extends Component {
     this.setState({currList: currList})
   }
 
+  //loop item list
   renderListItem = () => {
     const {latestCurr, currList, dollarValue} = this.state
     let ListItems = []
@@ -112,6 +113,7 @@ class App extends Component {
     return ListItems
   }
 
+  //warning validation
   renderWarningText = () => {
     const {warningText} = this.state
 
@@ -142,7 +144,7 @@ class App extends Component {
             {this.renderWarningText()}
             <AddItem
               options={options}
-              onChange={this.selectAddItem}
+              onChange={this.handleSelectAddItem}
               onClick={this.handleAddItemChange}
             />
           </Content>
